@@ -1,0 +1,38 @@
+{% extends "yet_another_site/base.html" %}
+
+{% load static %}
+
+{% block title %}Main page{% endblock title %}
+
+{% block content %}
+    <h1>The first three covers <small>with buttons</small></h1>
+    <div class=row>
+        {% for object in object_list %}
+            <div class="col-xs-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ MEDIA_URL }}{{ object.cover.image.url }}" alt="{{ object.descr }}">
+                    <div class="caption">
+                        <h3>{{ object.cover.descr }}</h3>
+                        <p><a href="{% url 'nomenclature_detail' object.id %}" class="btn btn-primary" role="button">Details...</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="lorem col-xs-12 col-md-6">
+            {% lorem 3 %}
+        </div>
+        <div class="lorem col-xs-12 col-md-6">
+            {% lorem 3 %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        $(document).ready(function() {
+            $('#index').addClass('active');
+        });
+    </script>
+{% endblock script %}

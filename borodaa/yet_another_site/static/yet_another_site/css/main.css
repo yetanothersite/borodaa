@@ -1,0 +1,51 @@
+.thumbnail img {
+    max-height: 10em;
+}
+
+body {
+    padding-top: 4em;
+}
+
+.lorem {
+    padding: 1em;
+}
+
+.cover img {
+  max-height: 10em;
+  margin: 1em;
+}
+
+.pictures img {
+  max-height: 4em;
+  padding: 1em;
+  box-shadow: 0.03em 0.03em 0.4em black;
+  border-radius: 0.3em;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a.btn {
+  margin: 1em;
+}
+
+form {
+  margin: 2em;
+}
+
+.nomenclature-position {
+  margin-top: 2em;
+}
+
+.nomenclature-position div {
+  display: inline-block;
+}
+
+.nomenclature-position img {
+  max-width: 9em;
+}

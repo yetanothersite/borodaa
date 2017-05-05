@@ -1,0 +1,33 @@
+{% extends "yet_another_site/base.html" %}
+
+{% block title %}Nomenclature list{% endblock title %}
+
+{% block content %}
+    <h1>Nomenclature List</h1>
+    {% for object in object_list %}
+        <div class="nomenclature-position">
+            <div>
+                <img src="{{ MEDIA_URL }}{{ object.cover.image.url }}" alt="{{ object.cover.descr }}">
+                <p><a href="{% url 'nomenclature_detail' object.id %}" class="btn btn-primary" role="button">Details...</a></p>
+            </div>
+            <div>
+                <h2>{{ object.descr }}</h2>
+                <p>Cat.:{{ object.category }}</p>
+                <p>SKU: {{ object.sku }}</p>
+                <p>Is tested: {{ object.is_tested }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <div class="nomenclature-position">
+            The Nomenclature List is empty
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+{% block script %}
+    <script>
+        $(document).ready(function() {
+            $('#nomenclature').addClass('active');
+        });
+    </script>
+{% endblock script %}

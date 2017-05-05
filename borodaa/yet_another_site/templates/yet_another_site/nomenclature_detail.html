@@ -1,0 +1,44 @@
+{% extends "yet_another_site/base.html" %}
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ STATIC_PREFIX }}yet_another_site/css/colorbox.css" />
+{% endblock link %}
+
+{% block title %}Nomenclature detail{% endblock title %}
+
+{% block content %}
+    <h1>Nomenclature detail</h1>
+    <h2>{{ object.descr }}</h2>
+    <p>Cat.:{{ object.category }}</p>
+    <p>SKU: {{ object.sku }}</p>
+    <p>Is tested: {{ object.is_tested }}</p>
+    <div class="row">
+        <div class="cover col-xs-12">
+            <img src="{{ MEDIA_URL }}{{ object.cover.image.url }}" alt="{{ object.cover.image.descr }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="pictures col-xs-12">
+            {% for picture in object.picture_set.all  %}
+                <a class="gallery" href="{{ MEDIA_URL }}{{ picture.image.url }}">
+                    <img src="{{ MEDIA_URL }}{{ picture.image.url }}" alt="{{ picture.descr }}">
+                </a>
+            {% endfor %}
+            <a class="btn btn-info" role="button" href="{% url 'nomenclature_list' %}">Nomenclature list...</a>
+        </div> 
+    </div>
+    <div style="margin-bottom: 10em"></div>
+{% endblock content %}
+
+{% block script %}
+    <script src="{{ STATIC_PREFIX }}yet_another_site/js/jquery.colorbox.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#nomenclature').addClass('active');
+            $(".gallery").colorbox({rel:'gallery', transition:"none", width:"75%", height:"75%"});
+        });
+    </script>
+{% endblock script %}
